@@ -44,6 +44,7 @@ The system stores:
 
 **Username:** Demo  
 **Password:** Demo@1234
-- These credentials are only for project demonstration.
+## These credentials are only for project demonstration.
+>
 > 
 > <img width="2850" height="1486" alt="image" src="https://github.com/user-attachments/assets/286539fe-dda6-434d-86de-f29a74620479" />
