@@ -1,126 +1,165 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Student Management System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Database Management System</title>
+
     <link rel="stylesheet" href="{% static 'students/style.css' %}">
 </head>
 
 <body>
 
-<div class="sidebar">
+    <!-- Sidebar -->
+    <div class="sidebar">
 
-    <h2>🎓 Student MS</h2>
-
-    <a href="{% url 'home' %}">🏠 Dashboard</a>
-
-    <a href="{% url 'add_student' %}">➕ Add Student</a>
-
-    <a href="{% url 'student_list' %}">👨‍🎓 Students</a>
-
-    <a href="{% url 'logout' %}">🚪 Logout</a>
-
-</div>
-
-
-<div class="main">
-
-    <div class="header">
-
-        <div>
-            <h1>Dashboard</h1>
-            <p>Welcome to Student Management System</p>
+        <div class="sidebar-logo">
+            <h2>🎓 Student DB</h2>
         </div>
 
-        <a href="{% url 'add_student' %}" class="btn">
-            + Add Student
+        <a href="{% url 'home' %}" class="active">
+            🏠 Dashboard
+        </a>
+
+        <a href="{% url 'add_student' %}">
+            ➕ Add Student
+        </a>
+
+        <a href="{% url 'student_list' %}">
+            👨‍🎓 View Students
         </a>
 
     </div>
 
 
-    <div class="cards">
+    <!-- Main Content -->
+    <div class="main">
 
-        <div class="card">
-            <h3>Total Students</h3>
-            <div class="number">
-                {{ total_students }}
+        <!-- Header -->
+        <div class="header">
+
+            <div>
+                <h1>Student Database Management System</h1>
+                <p>Manage student records easily and efficiently</p>
             </div>
+
+            <a href="{% url 'add_student' %}" class="btn add-btn">
+                + Add Student
+            </a>
+
         </div>
 
 
-        <div class="card">
-            <h3>Total Courses</h3>
-            <div class="number">
-                {{ total_courses }}
+        <!-- Dashboard Cards -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Students</h3>
+
+                <div class="number">
+                    {{ total_students }}
+                </div>
             </div>
+
+
+            <div class="card">
+                <h3>Recent Students</h3>
+
+                <div class="number">
+                    {{ recent_students|length }}
+                </div>
+            </div>
+
+
+            <div class="card">
+                <h3>Student Records</h3>
+
+                <div class="number">
+                    {{ total_students }}
+                </div>
+            </div>
+
         </div>
 
 
-        <div class="card">
-            <h3>Total Semesters</h3>
-            <div class="number">
-                {{ total_semesters }}
+        <!-- Recent Students -->
+        <div class="table-container">
+
+            <div class="table-header">
+
+                <h2>Recent Students</h2>
+
             </div>
+
+
+            {% if recent_students %}
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Semester</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for student in recent_students %}
+
+                    <tr>
+
+                        <td>
+                            {{ student.name }}
+                        </td>
+
+                        <td>
+                            {{ student.course }}
+                        </td>
+
+                        <td>
+                            {{ student.semester }}
+                        </td>
+
+                        <td>
+                            <a href="{% url 'student_detail' student.id %}"
+                               class="view-btn">
+                                View
+                            </a>
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+            {% else %}
+
+            <div class="no-data">
+
+                <p>No students added yet.</p>
+
+                <a href="{% url 'add_student' %}" class="btn">
+                    Add Your First Student
+                </a>
+
+            </div>
+
+            {% endif %}
+
         </div>
 
     </div>
 
-
- <div class="table-container">
-
-    <h2>Recent Students</h2>
-
-    {% if recent_students %}
-
-    <table>
-
-        <tr>
-            <th>Name</th>
-            <th>Course</th>
-            <th>Semester</th>
-            <th>Action</th>
-        </tr>
-
-        {% for student in recent_students %}
-
-        <tr>
-
-            <td>
-                {{ student.name }}
-            </td>
-
-            <td>
-                {{ student.course }}
-            </td>
-
-            <td>
-                {{ student.semester }}
-            </td>
-
-            <td>
-                <a href="{% url 'student_detail' student.id %}"
-                   class="btn">
-                    View
-                </a>
-            </td>
-
-        </tr>
-
-        {% endfor %}
-
-    </table>
-
-    {% else %}
-
-    <p>No students added yet.</p>
-
-    {% endif %}
-
-</div>
-
-</div>
-
 </body>
+
 </html>
