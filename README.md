@@ -4,7 +4,6 @@ A simple web-based Student Database Management System developed using Python and
 
 ## Features
 
-- User Login and Logout
 - Dashboard
 - Add Student
 - View All Students
@@ -40,11 +39,7 @@ The system stores:
 - Update – Edit Student
 - Delete – Delete Student
 
-## Demo Login
-These credentials are only for project demonstration.
-
-**Username:** Demo  
-**Password:** Demo@1234
 >
 ## Application Dashboard 
-> <img width="2850" height="1486" alt="image" src="https://github.com/user-attachments/assets/286539fe-dda6-434d-86de-f29a74620479" />
+> <img width="2757" height="1394" alt="image" src="https://github.com/user-attachments/assets/6a55d423-ea70-4c86-9df1-50a5033aa7e8" />
+
