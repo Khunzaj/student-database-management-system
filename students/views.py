@@ -5,7 +5,7 @@ from .models import Student
 
 
 def home(request):
-    recent_students = Student.objects.order_by('-id')[:5]
+    recent_students = Student.objects.order_by('-id')[:3]
     total_students = Student.objects.count()
 
     return render(request, 'students/home.html', {
